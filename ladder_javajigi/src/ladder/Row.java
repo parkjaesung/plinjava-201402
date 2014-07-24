@@ -36,21 +36,17 @@ class Row {
 		persons[startIndex] = Direction.RIGHT.getNo();
 		persons[startIndex + 1] = Direction.LEFT.getNo();
 	}
-
-	int move(int startMarker) {
-		if (startMarker < 0) {
-			throw new IllegalArgumentException(String.format("사다리 시작 위치는 0 이상이어야 합니다. 현재 값은 : %d", startMarker));
-		}
-		
-		if (isNoLine(startMarker)) {
+	
+	Marker move(Marker startMarker) {
+		if (isNoLine(startMarker.toArrayIndex())) {
 			return startMarker;
 		}
 		
-		if (isRightDirection(startMarker)) {
-			return startMarker + 1;
+		if (isRightDirection(startMarker.toArrayIndex())) {
+			return startMarker.moveRight();
 		}
 		
-		return startMarker - 1;
+		return startMarker.moveLeft();
 	}
 
 	private boolean isRightDirection(int nthOfPerson) {

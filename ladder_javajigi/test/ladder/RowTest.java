@@ -31,35 +31,26 @@ public class RowTest extends TestCase {
 		}
 	}
 	
-	public void testMarkerPosition() throws Exception {
-		try {
-			row.move(-1);
-			fail("IllegalArgumentException 에러가 발생해야 한다.");
-		} catch (IllegalArgumentException e) {
-			assertTrue(true);
-		}
-	}
-	
 	public void testMoveWhenNoLine() throws Exception {
-		int target = row.move(0);
-		assertEquals(0, target);
+		NaturalNumber target = row.move(new Marker(1));
+		assertEquals(1, target.getNumber());
 
-		target = row.move(2);
-		assertEquals(2, target);
+		target = row.move(new Marker(2));
+		assertEquals(2, target.getNumber());
 	}
 	
 	public void testMoveWhenLineLeft() throws Exception {
 		// 0 1 1
 		row.drawLine(new NaturalNumber(2));
-		int target = row.move(2);
-		assertEquals(1, target);
+		NaturalNumber target = row.move(new Marker(3));
+		assertEquals(2, target.getNumber());
 	}
 	
 	public void testMoveWhenLineRight() throws Exception {
 		// 0 1 1
 		row.drawLine(new NaturalNumber(2));
 		
-		int target = row.move(1);
-		assertEquals(2, target);
+		NaturalNumber target = row.move(new Marker(2));
+		assertEquals(3, target.getNumber());
 	}
 }
