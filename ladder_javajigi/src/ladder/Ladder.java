@@ -12,7 +12,7 @@ class Ladder {
 			rows[i] = new Row(noOfPerson);
 		}
 	}
-
+	
 	void drawLine(NaturalNumber height, NaturalNumber startPosition) {
 		if (isOverHeight(height)) {
 			throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어섰습니다. 현재 값 : %d", height));
@@ -28,10 +28,20 @@ class Ladder {
 	Marker run(Marker nthOfPerson) {
 		for (int i = 0; i < rows.length; i++) {
 			Row row = rows[i];
-			
 			nthOfPerson = row.move(nthOfPerson);
+			String result = generate(rows, Position.createFromArrayIndex(i, nthOfPerson.toArrayIndex()));
+			System.out.println(result);
 		}
 
 		return nthOfPerson;
+	}
+
+	static String generate(Row[] rows, Position position) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < rows.length; i++) {
+			Row row = rows[i];
+			row.generateRow(sb, i, position);
+		}
+		return sb.toString();
 	}
 }

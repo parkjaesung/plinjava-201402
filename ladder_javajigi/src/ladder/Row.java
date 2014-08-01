@@ -34,4 +34,22 @@ class Row {
 	Marker move(Marker marker) {
 		return nodes[marker.toArrayIndex()].move(marker);
 	}
+
+	Node[] getNodes() {
+		return this.nodes;
+	}
+	
+	void generateRow(StringBuilder sb, int currentHeight, Position position) {
+		for (int j = 0; j < nodes.length; j++) {
+			Node node = nodes[j];
+			node.appendSymbol(sb);
+			
+			if (position.equals(Position.createFromArrayIndex(currentHeight, j))) {
+				sb.append("*");
+			}
+			
+			sb.append(" ");
+		}
+		sb.append("\n");
+	}
 }

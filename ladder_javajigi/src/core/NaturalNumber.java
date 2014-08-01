@@ -1,6 +1,8 @@
 package core;
 
 public class NaturalNumber {
+	private static final int INTERVAL = 1;
+	
 	private int number;
 
 	public NaturalNumber(int number) {
@@ -15,7 +17,11 @@ public class NaturalNumber {
 	}
 
 	public int toArrayIndex() {
-		return this.number - 1;
+		return this.number - INTERVAL;
+	}
+	
+	public static NaturalNumber createFromArrayIndex(int index) {
+		return new NaturalNumber(index + INTERVAL);
 	}
 
 	@Override

@@ -33,4 +33,15 @@ public class NodeTest extends TestCase {
 		Node node = Node.createCenterNode();
 		assertEquals(new Marker(3), node.move(new Marker(3)));
 	}
+	
+	public void testAppendSymbol() throws Exception {
+		StringBuilder sb = new StringBuilder();
+		Node node = Node.createCenterNode();
+		node.appendSymbol(sb);
+		assertEquals("0", sb.toString());
+//		node = Node.createLeftNode();
+//		assertEquals(-1, node.getSymbol());
+//		node = Node.createRightNode();
+//		assertEquals(1, node.getSymbol());
+	}
 }
