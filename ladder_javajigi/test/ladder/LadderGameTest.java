@@ -3,13 +3,13 @@ package ladder;
 import core.NaturalNumber;
 import junit.framework.TestCase;
 
-public class LadderTest extends TestCase {
+public class LadderGameTest extends TestCase {
 	public void testRunWhenMultiRows() throws Exception {
 		// 1 -1 0 0
 		// 0 1 -1 0
 		// 0 0 1 -1
 
-		Ladder ladder = new Ladder(new NaturalNumber(3), new NaturalNumber(4));
+		LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4));
 		ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 		ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
 		ladder.drawLine(new NaturalNumber(3), new NaturalNumber(3));
@@ -22,32 +22,11 @@ public class LadderTest extends TestCase {
 	
 	public void testDrawLineWhenOverNoOfRows() throws Exception {
 		try {
-			Ladder ladder = new Ladder(new NaturalNumber(3), new NaturalNumber(4));
+			LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4));
 			ladder.drawLine(new NaturalNumber(4), new NaturalNumber(4));
 			fail("IllegalArgumentException 에러가 발생해야 한다.");
 		} catch (IllegalArgumentException e) {
 			assertTrue(true);
 		}
-	}
-	
-	public void testGenerate_라인이_없는경우() throws Exception {
-		Row[] rows = new Row[3];
-		for (int i = 0; i < rows.length; i++) {
-			rows[i] = new Row(new NaturalNumber(3));
-		}
-		
-		String result = Ladder.generate(rows, Position.create(1, 1));
-		assertEquals("0* 0 0 \n0 0 0 \n0 0 0 \n", result);
-	}
-	
-	public void testGenerate_라인이_있는경우() throws Exception {
-		Row[] rows = new Row[3];
-		for (int i = 0; i < rows.length; i++) {
-			rows[i] = new Row(new NaturalNumber(3));
-		}
-		rows[0].drawLine(new NaturalNumber(1));
-		
-		String result = Ladder.generate(rows, Position.create(1, 1));
-		assertEquals("1* -1 0 \n0 0 0 \n0 0 0 \n", result);
 	}
 }
