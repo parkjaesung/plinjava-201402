@@ -26,4 +26,10 @@ public class NaturalNumberTest extends TestCase {
 		NaturalNumber actual = NaturalNumber.createFromArrayIndex(1);
 		assertEquals(new NaturalNumber(2), actual);
 	}
+	
+	public void testMultiply() throws Exception {
+		NaturalNumber number = new NaturalNumber(3);
+		NaturalNumber actual = number.multiply(new NaturalNumber(4));
+		assertEquals(new NaturalNumber(12), actual);
+	}
 }

@@ -23,7 +23,11 @@ public class NaturalNumber {
 	public static NaturalNumber createFromArrayIndex(int index) {
 		return new NaturalNumber(index + INTERVAL);
 	}
-
+	
+	public NaturalNumber multiply(NaturalNumber operand) {
+		return new NaturalNumber(this.number * operand.number);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,5 +48,10 @@ public class NaturalNumber {
 		if (number != other.number)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "NaturalNumber [number=" + number + "]";
 	}
 }

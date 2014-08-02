@@ -55,4 +55,10 @@ class Position {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Position [height=" + height + ", nthOfPerson=" + nthOfPerson
+				+ "]";
+	}
 }
