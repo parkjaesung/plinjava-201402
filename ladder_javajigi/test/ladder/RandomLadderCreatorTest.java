@@ -1,6 +1,7 @@
 package ladder;
 
 import junit.framework.TestCase;
+import core.NaturalNumber;
 
 public class RandomLadderCreatorTest extends TestCase {
 	public void testGenerateStartPositions() throws Exception {
@@ -9,5 +10,11 @@ public class RandomLadderCreatorTest extends TestCase {
 		for (int i = 0; i < positions.length; i++) {
 			System.out.println(String.format("position : %s", positions[i]));
 		}
+	}
+	
+	public void testIsExisted() throws Exception {
+		NaturalNumber[] startPositions = {new NaturalNumber(2), new NaturalNumber(3)};
+		assertTrue(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(2)));
+		assertFalse(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(4)));
 	}
 }

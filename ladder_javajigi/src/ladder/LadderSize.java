@@ -49,4 +49,12 @@ class LadderSize {
 		NaturalNumber totalPositions = height.multiply(noOfPerson);
 		return totalPositions;
 	}
+
+	boolean isMultipleOfPerson(NaturalNumber randomPosition) {
+		int remainder = randomPosition.getNumber() % noOfPerson.getNumber();
+		if (remainder == 0) {
+			return true;
+		}
+		return false;
+	}
 }

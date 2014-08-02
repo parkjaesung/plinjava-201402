@@ -48,10 +48,36 @@ public class RandomLadderCreator {
 		NaturalNumber totalPositions = ladderSize.getTotalPosition();
 		int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
 		NaturalNumber[] startPositions = new NaturalNumber[countOfLine];
-		for (int i = 0; i < startPositions.length; i++) {
-			startPositions[i] = randInt(1, totalPositions.getNumber());
-			System.out.println(String.format("random position : %s", startPositions[i]));
-		}
+		
+		int i = 0;
+		do {
+			NaturalNumber randomPosition = randInt(1, totalPositions.getNumber());
+			if (ladderSize.isMultipleOfPerson(randomPosition)) {
+				continue;
+			}
+			if (isExisted(startPositions, randomPosition)) {
+				continue;
+			}
+			
+			if (isExisted(startPositions, new NaturalNumber(randomPosition.getNumber() + 1))) {
+				continue;
+			}
+			
+			if (randomPosition.equals(new NaturalNumber(1))) {
+				startPositions[i] = randomPosition;
+				System.out.println(String.format("random position : %s", startPositions[i]));
+				i++;				
+			} else {
+				if (isExisted(startPositions, new NaturalNumber(randomPosition.toArrayIndex()))) {
+					continue;
+				}
+				
+				startPositions[i] = randomPosition;
+				System.out.println(String.format("random position : %s", startPositions[i]));
+				i++;				
+			}
+		} while (i < countOfLine);
+		
 		return startPositions;
 	}
 	
@@ -66,5 +92,15 @@ public class RandomLadderCreator {
 	static NaturalNumber randInt(int min, int max) {
 	    Random rand = new Random();
 	    return new NaturalNumber(rand.nextInt((max - min) + 1) + min);
+	}
+
+	public static boolean isExisted(NaturalNumber[] startPositions,
+			NaturalNumber randomPosition) {
+		for (NaturalNumber each : startPositions) {
+			if (randomPosition.equals(each)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
