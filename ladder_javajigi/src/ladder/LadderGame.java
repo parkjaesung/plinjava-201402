@@ -3,10 +3,10 @@ package ladder;
 import core.NaturalNumber;
 
 class LadderGame {
-	private LadderCreator ladderCreator;
+	private RandomLadderCreator ladderCreator;
 
 	LadderGame(NaturalNumber height, NaturalNumber noOfPerson) {
-		ladderCreator = new LadderCreator(height, noOfPerson);
+		ladderCreator = new RandomLadderCreator(height, noOfPerson);
 	}
 	
 	void drawLine(NaturalNumber height, NaturalNumber startPosition) {

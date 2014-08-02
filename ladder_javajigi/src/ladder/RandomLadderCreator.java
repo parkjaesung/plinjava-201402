@@ -11,15 +11,18 @@ public class RandomLadderCreator {
 
 	private LadderSize ladderSize;
 
-	RandomLadderCreator(LadderSize ladderSize) {
-		NaturalNumber height = ladderSize.getHeight();
-		NaturalNumber noOfPerson = ladderSize.getNoOfPerson();
-		this.ladderSize = ladderSize;
+	RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+		this.ladderSize = LadderSize.create(height, noOfPerson);
 		
 		rows = new Row[height.getNumber()];
 		
 		for (int i = 0; i < height.getNumber(); i++) {
 			rows[i] = new Row(noOfPerson);
+		}
+		
+		Position[] startPositions = generateStartPositions();
+		for (Position position : startPositions) {
+			drawLine(position.getHeight(), position.getNthOfPerson());
 		}
 	}
 	
