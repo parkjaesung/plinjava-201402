@@ -4,7 +4,7 @@ import java.util.Random;
 
 import core.NaturalNumber;
 
-public class RandomLadderCreator {
+public class RandomLadderCreator implements LadderCreator {
 	private static final double DEFAULT_LINE_RATIO = 0.3;
 	
 	private Row[] rows;
@@ -26,7 +26,7 @@ public class RandomLadderCreator {
 		}
 	}
 	
-	void drawLine(NaturalNumber height, NaturalNumber startPosition) {
+	public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
 		if (isOverHeight(height)) {
 			throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어섰습니다. 현재 값 : %d", height));
 		}
@@ -38,7 +38,7 @@ public class RandomLadderCreator {
 		return height.toArrayIndex() > rows.length -1;
 	}
 
-	Row[] getLadder() {
+	public Row[] getLadder() {
 		return this.rows;
 	}
 	
