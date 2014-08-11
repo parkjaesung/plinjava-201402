@@ -4,26 +4,36 @@ import java.util.Random;
 
 import ladder.LadderSize;
 import ladder.Position;
+import ladder.Row;
 import core.NaturalNumber;
 
-public class RandomLadderCreator extends ManualLadderCreator implements LadderCreator {
+public class RandomLadderCreator implements LadderCreator {
 	private static final double DEFAULT_LINE_RATIO = 0.3;
 	
 	private LadderSize ladderSize;
 
-	public RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
-		super(height, noOfPerson);
-		
-		this.ladderSize = LadderSize.create(height, noOfPerson);
+	private LadderCreator ladderCreator;
+
+	public RandomLadderCreator(LadderCreator ladderCreator) {
+		this.ladderCreator = ladderCreator;
+		this.ladderSize = ladderCreator.getLadderSize();
 		
 		Position[] startPositions = generateStartPositions();
 		for (Position position : startPositions) {
-			super.drawLine(position.getHeight(), position.getNthOfPerson());
+			ladderCreator.drawLine(position.getHeight(), position.getNthOfPerson());
 		}
 	}
 	
 	public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
 		throw new UnsupportedOperationException("RandomLadderCreator에서는 drawLine 메서드를 호출할 수 없습니다.");
+	}
+	
+	public Row[] getLadder() {
+		return ladderCreator.getLadder();
+	}
+	
+	public LadderSize getLadderSize() {
+		return this.ladderSize;
 	}
 	
 	Position[] generateStartPositions() {
