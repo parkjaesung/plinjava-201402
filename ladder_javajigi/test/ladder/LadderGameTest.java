@@ -10,6 +10,16 @@ public class LadderGameTest extends TestCase {
 		System.out.println(result);
 	}
 	
+	public void testRunWhenRandomLadderAndDrawLine() throws Exception {
+		try {
+			LadderGame ladder = LadderGameFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
+			ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
+			fail();
+		} catch (UnsupportedOperationException e) {
+			assertTrue(true);
+		}
+	}
+	
 	public void testRunWhenRandomLadder() throws Exception {
 		LadderGame ladder = LadderGameFactory.randomLadderGame(new NaturalNumber(3), new NaturalNumber(4));
 		Marker result = ladder.run(new Marker(2));
