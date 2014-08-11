@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 
-class Position {
+public class Position {
 	private NaturalNumber height;
 	private NaturalNumber nthOfPerson;
 
@@ -11,11 +11,11 @@ class Position {
 		this.nthOfPerson = nthOfPerson;
 	}
 	
-	NaturalNumber getHeight() {
+	public NaturalNumber getHeight() {
 		return height;
 	}
 	
-	NaturalNumber getNthOfPerson() {
+	public NaturalNumber getNthOfPerson() {
 		return nthOfPerson;
 	}
 

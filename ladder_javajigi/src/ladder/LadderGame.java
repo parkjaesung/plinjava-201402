@@ -1,25 +1,15 @@
 package ladder;
 
+import ladder.creator.LadderCreator;
+import ladder.creator.LadderCreatorFactory;
+import ladder.creator.LadderCreatorFactory.LadderType;
 import core.NaturalNumber;
 
 class LadderGame {
-	enum LadderType {
-		MANUAL,
-		RANDOM;
-	}
-	
 	private LadderCreator ladderCreator;
 
-	LadderGame(NaturalNumber height, NaturalNumber noOfPerson) {
-		ladderCreator = new RandomLadderCreator(height, noOfPerson);
-	}
-	
 	LadderGame(NaturalNumber height, NaturalNumber noOfPerson, LadderType ladderType) {
-		if (ladderType == LadderType.MANUAL) {
-			ladderCreator = new ManualLadderCreator(height, noOfPerson);
-		} else {
-			ladderCreator = new RandomLadderCreator(height, noOfPerson);
-		}
+		ladderCreator = LadderCreatorFactory.newLadderCreator(height, noOfPerson, ladderType);
 	}
 	
 	void drawLine(NaturalNumber height, NaturalNumber startPosition) {
