@@ -13,9 +13,11 @@ public class Row {
 	}
 
 	public void drawLine(NaturalNumber startPosition) {
+		System.out.println(String.format("시작점 : %s", startPosition));
+		
 		int startIndex = startPosition.toArrayIndex();
 		if (isOverNoOfPersons(startIndex)) {
-			throw new IllegalArgumentException(String.format("시작점은 %d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startPosition));
+			throw new IllegalArgumentException(String.format("시작점은 %d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startPosition.getNumber()));
 		}
 		
 		if (nodes[startIndex].isLeftDirection()) {
