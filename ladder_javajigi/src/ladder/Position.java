@@ -10,6 +10,14 @@ class Position {
 		this.height = height;
 		this.nthOfPerson = nthOfPerson;
 	}
+	
+	NaturalNumber getHeight() {
+		return height;
+	}
+	
+	NaturalNumber getNthOfPerson() {
+		return nthOfPerson;
+	}
 
 	static Position create(int height, int nthOfPerson) {
 		return create(new NaturalNumber(height), new NaturalNumber(nthOfPerson));

@@ -19,6 +19,12 @@ public class RandomLadderCreator {
 		for (int i = 0; i < height.getNumber(); i++) {
 			rows[i] = new Row(noOfPerson);
 		}
+		
+		Position[] startPositions = generateStartPositions();
+		for (Position position : startPositions) {
+			drawLine(position.getHeight(),
+					position.getNthOfPerson());
+		}
 	}
 	
 	void drawLine(NaturalNumber height, NaturalNumber startPosition) {
