@@ -2,10 +2,10 @@ package ladder;
 
 import core.NaturalNumber;
 
-class LadderCreator {
+class ManuralLadderCreator {
 	private Row[] rows;
 
-	LadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+	ManuralLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
 		rows = new Row[height.getNumber()];
 		
 		for (int i = 0; i < height.getNumber(); i++) {

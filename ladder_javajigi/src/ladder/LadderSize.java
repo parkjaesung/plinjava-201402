@@ -23,6 +23,10 @@ class LadderSize {
 		return new LadderSize(new NaturalNumber(height), new NaturalNumber(noOfPerson));
 	}
 	
+	static LadderSize create(NaturalNumber height, NaturalNumber noOfPerson) {
+		return new LadderSize(height, noOfPerson);
+	}
+	
 	NaturalNumber getPositionOfPerson(NaturalNumber currentTotalPosition) {
 		int remainder = currentTotalPosition.getNumber() % noOfPerson.getNumber();
 		if (remainder == 0) {
