@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 
-class ManuralLadderCreator {
+class ManuralLadderCreator implements LadderCreator {
 	private Row[] rows;
 
 	ManuralLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
@@ -13,7 +13,11 @@ class ManuralLadderCreator {
 		}
 	}
 	
-	void drawLine(NaturalNumber height, NaturalNumber startPosition) {
+	/* (non-Javadoc)
+	 * @see ladder.LadderCreator#drawLine(core.NaturalNumber, core.NaturalNumber)
+	 */
+	@Override
+	public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
 		if (isOverHeight(height)) {
 			throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어섰습니다. 현재 값 : %d", height));
 		}
@@ -21,11 +25,15 @@ class ManuralLadderCreator {
 		rows[height.toArrayIndex()].drawLine(startPosition);
 	}
 	
-	private boolean isOverHeight(NaturalNumber height) {
+	protected boolean isOverHeight(NaturalNumber height) {
 		return height.toArrayIndex() > rows.length -1;
 	}
 
-	Row[] getLadder() {
+	/* (non-Javadoc)
+	 * @see ladder.LadderCreator#getLadder()
+	 */
+	@Override
+	public Row[] getLadder() {
 		return this.rows;
 	}
 }

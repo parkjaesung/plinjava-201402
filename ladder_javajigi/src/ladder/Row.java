@@ -15,7 +15,7 @@ class Row {
 	void drawLine(NaturalNumber startPosition) {
 		int startIndex = startPosition.toArrayIndex();
 		if (isOverNoOfPersons(startIndex)) {
-			throw new IllegalArgumentException(String.format("시작점은 %d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startPosition));
+			throw new IllegalArgumentException(String.format("시작점은 %d 미만이어야 합니다. 현재 값 : %d", nodes.length - 1, startPosition.getNumber()));
 		}
 		
 		if (nodes[startIndex].isLeftDirection()) {
@@ -27,6 +27,7 @@ class Row {
 	}
 
 	private boolean isOverNoOfPersons(int startIndex) {
+		System.out.println(String.format("Start Index : %d, No of Persons : %d", startIndex, nodes.length));
 		// 사람 수 5일 경우 선 시작 위치는 4이상이 될 수 없다. 즉, 3까지 허용
 		return startIndex >= nodes.length - 1;
 	}

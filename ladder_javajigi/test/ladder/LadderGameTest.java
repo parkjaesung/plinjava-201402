@@ -1,7 +1,8 @@
 package ladder;
 
-import core.NaturalNumber;
 import junit.framework.TestCase;
+import ladder.LadderCreatorFactory.Type;
+import core.NaturalNumber;
 
 public class LadderGameTest extends TestCase {
 	public void testRunWhenMultiRows() throws Exception {
@@ -9,7 +10,7 @@ public class LadderGameTest extends TestCase {
 		// 0 1 -1 0
 		// 0 0 1 -1
 
-		LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4));
+		LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), Type.MANUAL);
 		ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 		ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
 		ladder.drawLine(new NaturalNumber(3), new NaturalNumber(3));
@@ -22,7 +23,7 @@ public class LadderGameTest extends TestCase {
 	
 	public void testDrawLineWhenOverNoOfRows() throws Exception {
 		try {
-			LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4));
+			LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), Type.RANDOM);
 			ladder.drawLine(new NaturalNumber(4), new NaturalNumber(4));
 			fail("IllegalArgumentException 에러가 발생해야 한다.");
 		} catch (IllegalArgumentException e) {
