@@ -4,21 +4,43 @@ import java.util.Random;
 
 import core.NaturalNumber;
 
-public class RandomLadderCreator extends ManuralLadderCreator implements LadderCreator {
+public class RandomLadderCreator implements LadderCreator {
 	private static final double DEFAULT_LINE_RATIO = 0.3;
 	
+	private Row[] rows;
+
 	private LadderSize ladderSize;
 
 	RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
-		super(height, noOfPerson);
-		
 		this.ladderSize = LadderSize.create(height, noOfPerson);
+		
+		rows = new Row[height.getNumber()];
+		
+		for (int i = 0; i < height.getNumber(); i++) {
+			rows[i] = new Row(noOfPerson);
+		}
 		
 		Position[] startPositions = generateStartPositions();
 		for (Position position : startPositions) {
 			drawLine(position.getHeight(),
 					position.getNthOfPerson());
 		}
+	}
+	
+	public void drawLine(NaturalNumber height, NaturalNumber startPosition) {
+		if (isOverHeight(height)) {
+			throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어섰습니다. 현재 값 : %d", height));
+		}
+		
+		rows[height.toArrayIndex()].drawLine(startPosition);
+	}
+	
+	private boolean isOverHeight(NaturalNumber height) {
+		return height.toArrayIndex() > rows.length -1;
+	}
+
+	public Row[] getLadder() {
+		return this.rows;
 	}
 	
 	Position[] generateStartPositions() {
