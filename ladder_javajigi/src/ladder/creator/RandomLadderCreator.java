@@ -56,22 +56,10 @@ public class RandomLadderCreator implements LadderCreator {
 				continue;
 			}
 			
-			if (randomPositions.contains(randomPosition)) {
-				continue;
-			}
+			ArrayList<RandomNaturalNumber> checkedNaturalNumbers = randomPosition.checkedNatualNumbers(ladderSize.getNoOfPerson());
+			checkedNaturalNumbers.retainAll(randomPositions);
 			
-			if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() + 1))) {
-				continue;
-			}
-			
-			if (randomPosition.isFirst()) {
-				randomPositions.add(randomPosition);
-				System.out.println(String.format("added random position : %s", randomPosition));
-			} else {
-				if (randomPositions.contains(new RandomNaturalNumber(randomPosition.toArrayIndex()))) {
-					continue;
-				}
-				
+			if (checkedNaturalNumbers.isEmpty()) {
 				randomPositions.add(randomPosition);
 				System.out.println(String.format("added random position : %s", randomPosition));
 			}

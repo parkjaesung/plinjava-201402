@@ -30,7 +30,11 @@ public class NaturalNumber {
 	}
 	
 	public boolean isFirst() {
-		return getNumber() == FIRST_OF_NATURAL_NUMBER;
+		return isFirst(getNumber());
+	}
+	
+	public boolean isFirst(int number) {
+		return number == FIRST_OF_NATURAL_NUMBER;
 	}
 	
 	@Override

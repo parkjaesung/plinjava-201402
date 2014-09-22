@@ -1,5 +1,8 @@
 package ladder;
 
+import java.util.ArrayList;
+
+import core.NaturalNumber;
 import junit.framework.TestCase;
 
 public class RandomNaturalNumberTest extends TestCase {
@@ -25,5 +28,17 @@ public class RandomNaturalNumberTest extends TestCase {
 		
 		randomNumber = new RandomNaturalNumber(5);
 		assertFalse(randomNumber.isMultipleOfPerson(3));
+	}
+	
+	public void testCheckedNatualNumbers() throws Exception {
+		RandomNaturalNumber randomNumber = new RandomNaturalNumber(2);
+		ArrayList<RandomNaturalNumber> natualNumbers = randomNumber.checkedNatualNumbers(new NaturalNumber(3));
+		assertTrue(natualNumbers.size() == 3);
+	}
+
+	public void testCheckedNatualNumbersWhenFirst() throws Exception {
+		RandomNaturalNumber randomNumber = new RandomNaturalNumber(4);
+		ArrayList<RandomNaturalNumber> natualNumbers = randomNumber.checkedNatualNumbers(new NaturalNumber(3));
+		assertTrue(natualNumbers.size() == 2);
 	}
 }
