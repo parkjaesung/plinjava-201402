@@ -1,6 +1,7 @@
 package core;
 
 public class NaturalNumber {
+	private static final int FIRST_OF_NATURAL_NUMBER = 1;
 	private static final int INTERVAL = 1;
 	
 	private int number;
@@ -26,6 +27,10 @@ public class NaturalNumber {
 	
 	public NaturalNumber multiply(NaturalNumber operand) {
 		return new NaturalNumber(this.number * operand.number);
+	}
+	
+	public boolean isFirst() {
+		return getNumber() == FIRST_OF_NATURAL_NUMBER;
 	}
 	
 	@Override

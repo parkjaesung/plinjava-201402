@@ -32,4 +32,12 @@ public class NaturalNumberTest extends TestCase {
 		NaturalNumber actual = number.multiply(new NaturalNumber(4));
 		assertEquals(new NaturalNumber(12), actual);
 	}
+	
+	public void testIsFirst() throws Exception {
+		NaturalNumber number = new NaturalNumber(1);
+		assertTrue(number.isFirst());
+		
+		number = new NaturalNumber(2);
+		assertFalse(number.isFirst());
+	}
 }

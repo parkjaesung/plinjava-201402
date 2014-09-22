@@ -28,9 +28,9 @@ public class LadderSize {
 	}
 	
 	public Position getPosition(RandomNaturalNumber randomNaturalNumber) {
-		int positionOfPerson = randomNaturalNumber.getPositionOfPerson(noOfPerson.getNumber());
 		int positionOfHeight = randomNaturalNumber.getPositionOfHeight(noOfPerson.getNumber());
-		return Position.create(positionOfPerson, positionOfHeight);
+		int positionOfPerson = randomNaturalNumber.getPositionOfPerson(noOfPerson.getNumber());
+		return Position.create(positionOfHeight, positionOfPerson);
 	}
 	
 	public int getCountOfLine(double ratio) {
